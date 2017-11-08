@@ -13,7 +13,7 @@ $ npm install
 $ npm start
 ```
 
-## Build the client side
+## Build the client-side
 
 ```
 $ npm run build
