@@ -17,11 +17,10 @@ app.use(bodyParser.json());
 const port = process.env.PORT || 8080;
 
 // REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api/log
 app.use('/api/', apiRoute);
 app.use('/', appRoute);
 
 // START THE SERVER
 // =============================================================================
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Something good is about to start at port ' + port);

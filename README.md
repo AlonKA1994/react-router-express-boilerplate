@@ -1,6 +1,10 @@
 # react-router-express-boilerplate
 A project that shows how to connect react with simple routing + express.js REST-API
 
+Working with:
+React 16
+Express 4
+
 ## Setup
 
 ```

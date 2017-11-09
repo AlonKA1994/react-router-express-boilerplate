@@ -19,7 +19,8 @@ router.use(function(req, res, next) {
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/test', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!'});
+    res.sendStatus(200)
+        .json({ message: 'hooray! welcome to our api!'});
 });
 
 // on routes that end in /logs
@@ -27,7 +28,8 @@ router.get('/test', function(req, res) {
 router.route('/logs')
     // get all the logs (accessed at GET http://localhost:8080/api/logs)
     .get((req,res) => {
-        res.json(arrAllLogs);
+        res.sendStatus(200)
+            .json(arrAllLogs);
     })
     // create a log (accessed at POST http://localhost:8080/api/logs)
     .post((req,res) =>{
@@ -36,7 +38,8 @@ router.route('/logs')
         tmpLog.set("path", req.body.path);
         arrAllLogs.push(tmpLog.data);
 
-        res.json({message: "New log was added"});
+        res.sendStatus(200)
+            .json({message: "New log was added"});
     });
 
 // on routes that end in /logs/:log_id
@@ -47,7 +50,8 @@ router.route('/logs/:log_id')
     .get((req, res) => {
         let result = arrAllLogs.filter((log)=> log.id == req.params.log_id);
 
-        res.json(result);
+        res.sendStatus(200)
+            .json(result);
     })
     // update the log with this id (accessed at PUT http://localhost:8080/api/logs/:log_id)
     .put((req, res) => {
@@ -59,12 +63,15 @@ router.route('/logs/:log_id')
             return log;
         });
 
-        res.json({message: "Log was updated"});
+        res.sendStatus(200)
+            .json({message: "Log was updated"});
     })
+    // delete the log with this id (accessed at DELETE http://localhost:8080/api/logs/:log_id)
     .delete((req,res) => {
         arrAllLogs = arrAllLogs.filter((log) => log.id != req.params.log_id);
 
-        res.json({message: "Log was deleted"});
+        res.sendStatus(200)
+            .json({message: "Log was deleted"});
     });
 
 
