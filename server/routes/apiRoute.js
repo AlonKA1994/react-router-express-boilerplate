@@ -14,6 +14,10 @@ let router = express.Router();              // get an instance of the express Ro
 router.use(function(req, res, next) {
     // do logging
     console.log('Something is happening.');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers,X-Requested-With");
+
     next(); // make sure we go to the next routes and don't stop here
 });
 
@@ -45,7 +49,7 @@ router.route('/logs/:log_id')
 
     // get the log with that id (accessed at GET http://localhost:8080/api/logs/:log_id)
     .get((req, res) => {
-        let result = arrAllLogs.filter((log)=> log.id == req.params.log_id);
+        let result = arrAllLogs.find((log) => log.id == req.params.log_id);
 
         res.json(result);
     })
